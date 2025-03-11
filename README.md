@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # barber-shop
 
 This template should help get you started developing with Vue 3 in Vite.
@@ -37,3 +38,7 @@ npm run build
 ```sh
 npm run lint
 ```
+=======
+# Barber
+adios
+>>>>>>> 147058edfd422581d97f5f8725a18f9334ae3499

@@ -39,6 +39,6 @@ npm run build
 npm run lint
 ```
 =======
-# Barber
-adios
+# DentalSmart
+bye
 >>>>>>> 147058edfd422581d97f5f8725a18f9334ae3499

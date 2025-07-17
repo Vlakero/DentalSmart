@@ -1,9 +1,10 @@
 <template>
-    <header class="relative w-full h-237 bg-cover bg-center opacity-90" :style="{ backgroundImage: `url(${Barber})` }">
-        <div class="flex items-center justify-center min-h-screen">
+    <header class="relative w-full h-237 bg-cover bg-center" :style="{ backgroundImage: `url(${FondoDS})` }">
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative flex items-center justify-center min-h-screen">
             <div class="bg-white p-6 rounded shadow-md w-[40rem] h-[28rem]">
-                <h2 class="text-4xl font-bold mb-6 text-center">Cambio de Contraseña</h2>
-                <h1 class="text-6xl font-bold font-serif mb-6 text-center">BARBER SHOP</h1>
+                <h2 class="text-3xl font-bold mb-6 text-center">Cambio de Contraseña</h2>
+                <h1 class="text-6xl font-bold font-serif mb-6 text-center" style="color: #004B93;">DentalSmart</h1>
                 <form @submit.prevent="resetPassword">
                     <div class="mb-8">
                         <label class="block text-black mb-2" for="password">Nueva Contraseña:</label>
@@ -18,7 +19,7 @@
                             required placeholder="Confirmar Nueva Contraseña:" />
                     </div>
                     <button type="submit"
-                        class="w-full bg-[#AB9385] text-white py-3 rounded hover:bg-[#85736a] transition duration-200" :disabled="loading">
+                        class="w-full bg-[#004B93] text-white py-3 rounded hover:bg-[#063B6D] transition duration-200" :disabled="loading">
                         {{ loading ? 'Cambiado contraseña' : "Cambiar contraseña" }}
                     </button>
                 </form>
@@ -28,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import Barber from "../assets/img/Barbershop.jpg";
+import FondoDS from "../assets/img/FondoDS.jpg"
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios';

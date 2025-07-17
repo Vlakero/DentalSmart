@@ -1,11 +1,11 @@
 <template>
-    <div v-if="loading" class="text-2xl text-[#AB9385]">Cargando Usuario....</div>
+    <div v-if="loading" class="text-2xl text-[#004B93]">Cargando Usuario....</div>
 
     <div v-else class="w-full max-w-7xl overflow-x-auto">
-        <h2 class="text-4xl text-center font-semibold m-1 p-1 text-black">Users</h2>
-        <table class="w-full table-auto border-collapse border border-[#AB9385]">
+        <h2 class="text-4xl text-center font-semibold m-1 p-1 text-[00011A]">Usuarios</h2>
+        <table class="w-full table-auto border-collapse border border-[#004B93]">
             <thead>
-                <tr class="bg-white text-[#AB9385]">
+                <tr class="bg-white text-[#004B93]">
                     <th class="border border-black px-4 py-2">ID</th>
                     <th class="border border-black px-4 py-2">Nombre</th>
                     <th class="border border-black px-4 py-2">Correo</th>

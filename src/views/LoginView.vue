@@ -1,43 +1,50 @@
 <template>
-    <header class="relative w-full h-237 bg-cover bg-center opacity-90" :style="{ backgroundImage: `url(${Barber})` }">
-        <div class="flex items-center justify-center min-h-screen">
-            <div class="bg-white p-8 rounded shadow-md w-[40rem] h-[32rem]">
-                <h2 class="text-4xl font-bold mb-6 text-center">Iniciar Sesión</h2>
-                <h1 class="text-6xl font-bold font-serif mb-6 text-center">BARBER SHOP</h1>
-                <form @submit.prevent="login">
-                    <div class="mb-8">
-                        <label class="block text-black mb-2" for="name">Usuario</label>
-                        <input v-model="name" type="name" id="name"
-                            class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
-                            required placeholder="Usuario" />
-                    </div>
-                    <div class="mb-10">
-                        <label class="block text-black mb-2" for="password">Contraseña</label>
-                        <input v-model="password" type="password" id="password"
-                            class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
-                            required placeholder="Contraseña" />
-                    </div>
+  <header class="relative w-full h-237 bg-cover bg-center" :style="{ backgroundImage: `url(${FondoDS})` }">
+      <!-- Capa semi-transparente para aplicar opacidad solo al fondo -->
+      <!-- Se agregó esta capa para dar opacidad solo al fondo, sin afectar el contenido -->
+      <div class="absolute inset-0 bg-black opacity-50"></div>
 
-                    <div class="mb-5 flex items-center justify-center">
-                        <RouterLink to="/resertpassword" class="pl-3 font-black text-[#AB9385] underline">¿Olvide la
-                            Contraseña?</RouterLink>
-                        <RouterLink to="/register" class="pl-3 font-black text-[#AB9385] underline">Registarme
-                        </RouterLink>
-                    </div>
-                    <!-- <RouterLink to="/home" class="pl-3 font-black text-[#AB9385] underline">Entrar a home</RouterLink> -->
-                    <button type="submit"
-                        class="w-full bg-[#AB9385] text-white py-3 rounded hover:bg-[#85736a] transition duration-200"
-                        :disabled="loading">
-                        {{ loading ? 'Cargando...' : 'Iniciar Sessión' }}
-                    </button>
-                </form>
-            </div>
-        </div>
-    </header>
+      <!-- Se agregó 'relative' para que el contenido quede por encima de la capa de opacidad -->
+      <div class="relative flex items-center justify-center min-h-screen">
+          <div class="bg-white p-8 rounded shadow-md w-[40rem] h-[32rem]">
+              <h2 class="text-3xl font-bold mb-6 text-center">Iniciar Sesión</h2>
+              <h1 class="text-6xl font-bold font-serif mb-6 text-center" style="color: #004B93;">DentalSmart</h1>
+
+              <form @submit.prevent="login">
+                  <div class="mb-8">
+                      <label class="block text-black mb-2" for="name">Usuario</label>
+                      <input v-model="name" type="name" id="name"
+                          class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
+                          required placeholder="Usuario" />
+                  </div>
+                  <div class="mb-10">
+                      <label class="block text-black mb-2" for="password">Contraseña</label>
+                      <input v-model="password" type="password" id="password"
+                          class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
+                          required placeholder="Contraseña" />
+                  </div>
+
+                  <div class="mb-5 flex items-center justify-center">
+                      <RouterLink to="/resertpassword" class="pl-3 font-black text-[#004B93] underline">¿Olvidé la
+                          Contraseña?</RouterLink>
+                      <RouterLink to="/register" class="pl-3 font-black text-[#0381FB] underline">Registrarme
+                      </RouterLink>
+                  </div>
+
+                  <button type="submit"
+                      class="w-full bg-[#004B93] text-white py-3 rounded hover:bg-[#063B6D] transition duration-200"
+                      :disabled="loading">
+                      {{ loading ? 'Cargando...' : 'Iniciar Sesión' }}
+                  </button>
+              </form>
+          </div>
+      </div>
+  </header>
 </template>
 
+
 <script setup lang="ts">
-import Barber from "../assets/img/Barbershop.jpg"
+import FondoDS from "../assets/img/FondoDS.jpg"
 import { RouterLink, useRouter } from "vue-router";
 import { ref } from "vue";
 import axios from 'axios';

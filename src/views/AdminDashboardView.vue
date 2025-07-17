@@ -1,8 +1,13 @@
 <template>
-    <header class="bg-black relative w-full h-237 bg-cover bg-center opacity-90">
+    <header class="bg-[#000430] relative w-full h-237 bg-cover bg-center opacity-90">
         <div class="flex justify-between items-center p-5">
-            <h1 class="text-4xl text-[#AB9385] font-bold mb-1  text-center p-5">Welcome, Admin Dashboard</h1>
-            <button class="bg-[#AB9385] text-2xl rounded-xl p-2 m-4sdw">
+          <h1 class="text-4xl text-[#004B93] font-bold mb-1 text-center p-5 flex items-center justify-center gap-3">
+  <img src="../assets/img/DentalSmart.png" alt="Logo" class="w-10 h-10"> <!-- Imagen al lado -->
+  <span class="text-3xl text-[000847]">DentalSmart</span>
+  <span>Admin Dashboard</span>
+</h1>
+
+            <button class="bg-[#004B93] text-2xl rounded-xl p-2 m-4sdw">
                 <RouterLink @click.prevent="logout" to="" class="px-4 py-2" :style="{ color: '#ffffff' }">Cerrar
                     Sessión
                 </RouterLink>

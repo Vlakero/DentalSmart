@@ -1,16 +1,16 @@
 <template>
-    <header class="bg-black relative w-full h-237 bg-cover bg-center opacity-90">
+    <header class="bg-[#000430] relative w-full h-237 bg-cover bg-center opacity-90">
         <Navbar />
         <div class="flex flex-col items-center justify-center">
             <!-- Perfil del Usuario -->
             <div class="w-full max-w-4xl bg-gray-100 p-8 rounded-lg shadow-lg m-[5rem]">
-                <h1 class="text-3xl font-bold mb-4">Perfil del Usuario</h1>
-                <p class="text-lg"><strong>Nombre:</strong> {{ user.name }}</p>
-                <p class="text-lg"><strong>Correo:</strong> {{ user.email }}</p>
+                <h1 class="text-3xl font-bold mb-4 text-[#000430]">Perfil del Usuario</h1>
+                <p class="text-lg text-[#00011A]"><strong>Nombre:</strong> {{ user.name }}</p>
+                <p class="text-lg text-[#00011A]"><strong>Correo:</strong> {{ user.email }}</p>
             </div>
 
             <!-- Lista de Citas -->
-            <h2 class="text-3xl font-bold mt-8 mb-4 text-[#AB9385]">Citas Realizadas</h2>
+            <h2 class="text-3xl font-bold mt-8 mb-4 text-[#004B93]">Citas Realizadas</h2>
             <div class="w-full max-w-4xl space-y-4">
                 <div v-for="appointment in user.appointment" :key="appointment.id"
                     class="bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-between">

@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col items-center justify-center m-10">
-      <h1 class="text-4xl font-bold mb-8">Gestión de Citas</h1>
-  
+      <h1 class="text-4xl font-bold mb-8 text-[#00011A]">Gestión de Citas</h1>
+
       <!-- Lista de Citas -->
       <div class="w-full max-w-7xl">
         <div v-for="appointment in appointments" :key="appointment.id" class="bg-gray-50 p-4 mb-4 rounded-lg shadow-lg">
@@ -9,16 +9,16 @@
             <p class="text-lg text-gray-600">Cliente: {{ appointment.name }}</p>
             <p class="text-lg text-gray-600">Fecha: {{ appointment.date }}</p>
             <p class="text-lg text-gray-600">Hora: {{ appointment.time }}</p>
-            <p class="text-lg text-gray-600">Estado: 
+            <p class="text-lg text-gray-600">Estado:
               <span :class="getStatusColor(appointment.confirmedStatus)">
                 {{ appointment.confirmedStatus }}
               </span>
             </p>
-  
+
             <!-- Selector de Estado -->
             <div class="mt-4">
-              <select 
-                v-model="appointment.status" 
+              <select
+                v-model="appointment.status"
                 class="p-2 border border-gray-500 rounded-md"
               >
                 <option value="Pendiente">Pendiente</option>
@@ -26,11 +26,11 @@
                 <option value="Rechazado">Rechazado</option>
               </select>
             </div>
-  
+
             <!-- Botón para confirmar el cambio de estado -->
             <button
               @click="updateStatus(appointment)"
-              class="mt-2 bg-[#AB9385] text-white p-2 rounded-md disabled:bg-gray-400"
+              class="mt-2 bg-[#004B93] text-white p-2 rounded-md disabled:bg-gray-400"
               :disabled="appointment.confirmedStatus === 'Aceptado' || appointment.confirmedStatus === 'Rechazado'"
             >
               Confirmar Estado
@@ -40,22 +40,22 @@
       </div>
     </div>
   </template>
-  
+
   <script setup lang="ts">
   import { ref, onMounted } from 'vue';
   import axios from 'axios';
   import Swal from 'sweetalert2';
-  
+
   const appointments = ref([]);
-  
+
   const updateStatus = async (appointment) => {
     try {
       await axios.put(`https://localhost:7004/api/Appointment/updateStatus/${appointment.id}`, {
         status: appointment.status,
       });
-  
+
       appointment.confirmedStatus = appointment.status; // Actualiza el estado confirmado
-  
+
       Swal.fire({
         icon: 'success',
         title: 'Estado actualizado',
@@ -63,7 +63,7 @@
         timer: 2000,
         showConfirmButton: false,
       });
-  
+
     } catch (error) {
       console.error('Error al actualizar estado:', error);
       Swal.fire({
@@ -73,7 +73,7 @@
       });
     }
   };
-  
+
   const fetchAppointments = async () => {
     try {
       const response = await axios.get('https://localhost:7004/api/Appointment/All');
@@ -85,7 +85,7 @@
       console.error('Error al cargar citas:', error);
     }
   };
-  
+
   const getStatusColor = (status) => {
     switch (status) {
       case 'Pendiente': return 'text-yellow-600';
@@ -94,9 +94,8 @@
       default: return 'text-gray-600';
     }
   };
-  
+
   onMounted(() => {
     fetchAppointments();
   });
   </script>
-  

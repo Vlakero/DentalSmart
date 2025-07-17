@@ -1,9 +1,9 @@
 <template>
-  <header class="bg-black relative w-full h-237 bg-cover bg-center opacity-90">
+  <header class="bg-[#000430] relative w-full h-237 bg-cover bg-center">
     <Navbar />
     <div class="text-center py-30 text-white">
-      <h1 class="text-4xl font-bold mb-4">Agenda tu Cita</h1>
-      <p class="text-lg">Reserva tu espacio con nosotros y luce impecable.</p>
+      <h1 class="text-4xl font-bold mb-4">Agenda tu Próxima Cita</h1>
+      <p class="text-lg">Reserva tu espacio con nosotros y luce una nueva y saludable sonrisa.</p>
     </div>
 
     <form @submit.prevent="submitForm" class="max-w-lg mx-auto px-10 bg-white p-6 rounded-lg shadow-lg">
@@ -11,7 +11,7 @@
         <label class="block text-black mb-2" for="name">Nombre</label>
         <input type="name" id="name"
           class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300" required
-          placeholder="name" 
+          placeholder="name"
           v-model="userName" readonly/>
       </div>
 
@@ -19,7 +19,7 @@
         <label class="block text-black mb-2" for="phone">Telefono</label>
         <input type="tel" id="phone"
           class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300" required
-          placeholder="Telefono" 
+          placeholder="Telefono"
           v-model="phone"/>
       </div>
 
@@ -37,12 +37,12 @@
         <label class="block text-black mb-2" for="time">Hora</label>
         <input type="time" id="time"
           class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300" required
-          placeholder="time" 
+          placeholder="time"
            v-model="time"/>
       </div>
 
       <button type="submit"
-        class="w-full bg-[#AB9385] text-white py-3 rounded hover:bg-[#85736a] transition duration-200">
+        class="w-full bg-[#004B93] text-white py-3 rounded hover:bg-[#063B6D] transition duration-200">
         Reservar
       </button>
     </form>
@@ -92,7 +92,7 @@ const submitForm = async () => {
     name.value = ''
     phone.value = ''
     date.value = ''
-    time.value = '' 
+    time.value = ''
 
   } catch (error) {
     console.log("Error al agendar la cita:", error);

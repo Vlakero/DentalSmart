@@ -84,20 +84,21 @@ const userName = ref(localStorage.getItem('name') ?? '');
 const userId = localStorage.getItem('userId');
 
 const submitForm = async () => {
+  const fullDateTime = `${date.value}T${time.value}:00Z`;
 
-  const fullDateTime = `${date.value}T${time.value}:00Z`
+  // ✅ Validar y transformar el teléfono
+  const cleanedPhone = phone.value.replace(/\D/g, ''); // elimina espacios, guiones, paréntesis
+  const internationalPhone = `+521${cleanedPhone.slice(-10)}`;
 
   try {
     const response = await axios.post('https://localhost:7004/api/Appointment/CreateCita', {
       name: name.value,
-      phone: phone.value,
+      phone: internationalPhone, // 👈 Enviar número limpio y válido
       date: fullDateTime,
       userId: userId,
       doctorId: selectedDoctor.value,
       status: "Pendiente"
     });
-
-    console.log(response.data.message);
 
     Swal.fire({
       icon: 'success',
@@ -105,16 +106,13 @@ const submitForm = async () => {
       timer: 1500,
       showConfirmButton: false
     });
-    name.value = ''
-    phone.value = ''
-    date.value = ''
-    time.value = ''
 
+    name.value = '';
+    phone.value = '';
+    date.value = '';
+    time.value = '';
   } catch (error) {
     console.log("Error al agendar la cita:", error);
-    if (error.response){
-      console.log("Detalles del error:", error.response.data);
-    }
     Swal.fire({
       icon: 'error',
       title: 'Error',

@@ -1,4 +1,5 @@
 <template>
+    <Loading v-if="loadingStore.isLoading" class="absolute z-10"/>
   <header class="relative w-full h-237 bg-cover bg-center" :style="{ backgroundImage: `url(${FondoDS})` }">
       <!-- Capa semi-transparente para aplicar opacidad solo al fondo -->
       <!-- Se agregó esta capa para dar opacidad solo al fondo, sin afectar el contenido -->
@@ -12,8 +13,8 @@
 
               <form @submit.prevent="login">
                   <div class="mb-8">
-                      <label class="block text-black mb-2" for="name">Usuario</label>
-                      <input v-model="name" type="name" id="name"
+                      <label class="block text-black mb-2" for="email">Email</label>
+                      <input v-model="email" type="email" id="email"
                           class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
                           required placeholder="Usuario" />
                   </div>
@@ -49,20 +50,23 @@ import { RouterLink, useRouter } from "vue-router";
 import { ref } from "vue";
 import axios from 'axios';
 import Swal from "sweetalert2";
+import { useLoadingStore } from "@/stores/loadingStore";
+import Loading from "@/components/common/Loading.vue";
 
-const name = ref('');
+const email = ref('');
 const password = ref('');
 const error = ref('');
 const loading = ref(false);
 const router = useRouter();
+const loadingStore = useLoadingStore()
 
 const login = async () => {
 
-    loading.value = true;
+    loadingStore.startLoading()
 
     try {
         const response = await axios.post('https://localhost:7004/api/User/login', {
-            name: name.value,
+            email: email.value,
             password: password.value
         });
 
@@ -90,6 +94,8 @@ const login = async () => {
                     router.push('/admin-dashboard');
                 } else if (usertype === 'user') {
                     router.push('/home');
+                } else if (usertype == 'doctor') {
+                    router.push('/doctor-dashboard')
                 }
             }, 1500);
         }, 0);
@@ -102,7 +108,7 @@ const login = async () => {
             text: "El nombre del Usuario o Contraseña es incorrecto. Por favor, inténtalo de nuevo."
         })
     } finally {
-        loading.value = false;
+        loadingStore.stopLoading()
     }
 };
 </script>

@@ -8,9 +8,8 @@
       </div>
 
       <nav class="flex flex-col gap-4 text-lg">
-        <RouterLink to="/admin-dashboard" class="hover:text-[#04B0F0]">Dashboard</RouterLink>
-        <RouterLink to="/admin-usuarios" class="hover:text-[#04B0F0]">Usuarios</RouterLink>
-        <RouterLink to="/admin-citas" class="hover:text-[#04B0F0]">Citas</RouterLink>
+        <RouterLink to="/doctor-dashboard" class="hover:text-[#04B0F0]">Dashboard</RouterLink>
+        <RouterLink to="/doctor-citas" class="hover:text-[#04B0F0]">Citas</RouterLink>
       </nav>
 
       <div class="mt-auto">
@@ -27,8 +26,8 @@
     <div class="flex-1 flex flex-col">
       <!-- Header -->
       <header class="bg-white shadow p-4 flex justify-between items-center">
-        <h2 class="text-2xl font-semibold text-[#004B93]">Panel de Administración</h2>
-        <p class="text-gray-600">Bienvenido, Administrador</p>
+        <h2 class="text-2xl font-semibold text-[#004B93]">Panel de Doctor</h2>
+        <p class="text-gray-600">Bienvenido, Dr. {{ name }}</p>
       </header>
 
     </div>
@@ -41,6 +40,7 @@ import axios from 'axios';
 // import UserCount from '@/components/admin/AdminUsuariosView.vue';
 // import CitasCount from '@/components/admin/CitasCount.vue';
 // import Appointment from '@/components/admin/AdminCitasView.vue';
+const name = localStorage.getItem('name')
 
 const logout = async () => {
   try {

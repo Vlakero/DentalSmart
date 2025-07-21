@@ -63,7 +63,31 @@ const router = createRouter({
       name: 'admin-dashboard',
       component: () => import('../views/AdminDashboardView.vue'),
       meta: { requiresAuth: true, role: 'admin'}
-    }
+    },
+    {
+      path: '/admin-usuarios',
+      name: 'admin-usuarios',
+      component: () => import('../components/admin/AdminUsuariosView.vue'),
+      meta: { requiresAuth: true, role: 'admin' }
+    },
+    {
+      path: '/admin-citas',
+      name: 'admin-citas',
+      component: () => import('../components/admin/AdminCitasView.vue'),
+      meta: { requiresAuth: true, role: 'admin' }
+    },
+    {
+      path: '/doctor-dashboard',
+      name: 'doctor-dashboard',
+      component: () => import('../views/DoctorDashboardView.vue'),
+      meta: { requiresAuth: true, role: 'doctor'}
+    },
+    {
+      path: '/doctor-citas',
+      name: 'doctor-citas',
+      component: () => import('../components/Doctors/DoctorCitasView.vue'),
+      meta: { requiresAuth: true, role: 'doctor' }
+    },
   ],
 })
 

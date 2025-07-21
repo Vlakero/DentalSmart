@@ -12,13 +12,14 @@
                 <div>
                     <h2 class="text-3xl font-semibold text-white">Nuestra Historia</h2>
                     <p class="mt-4 text-white">
-                        Somos una empresa dedicada a brindar soluciones innovadoras en marketing digital.
-                        Nuestro compromiso es ayudar a pequeñas empresas a mejorar su presencia en línea.
+                        Nuestra clínica dental nació en el año 2015 con el firme propósito de ofrecer atención odontológica de calidad en Cancún. Iniciamos como un pequeño consultorio familiar, motivados por la pasión de brindar sonrisas saludables a nuestra comunidad. A lo largo de los años, hemos crecido y
+                        nos hemos consolidado como un centro integral, incorporando tecnología de vanguardia y un equipo de especialistas comprometidos con el bienestar de cada paciente.
                     </p>
                     <h2 class="mt-6 text-3xl font-semibold text-white">Nuestra Misión</h2>
                     <p class="mt-4 text-white">
-                        Brindar estrategias efectivas para que las empresas alcancen sus objetivos
-                        y crezcan en el entorno digital.
+                        Proporcionar atención odontológica integral, ética y de alta calidad, enfocada en la prevención, diagnóstico y tratamiento 
+                        personalizado, para mejorar la salud bucal 
+                        y la calidad de vida de nuestros pacientes en un ambiente cálido, seguro y profesional.
                     </p>
                 </div>
 
@@ -28,7 +29,7 @@
                     <div class="mt-4">
                         <iframe
                             class="w-full h-64 md:h-80 rounded-lg shadow-lg"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.839709994739!2d-99.13320938509317!3d19.4326076868869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f92dd3d3b9a5%3A0xb2c9e2a84e3d392b!2sPalacio%20de%20Bellas%20Artes!5e0!3m2!1ses!2smx!4v1634801790281!5m2!1ses!2smx"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.402203777879!2d-86.84713128558097!3d21.145705089630302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f4c2c48e11b85f7%3A0x93e24190d0f370db!2sTierra%20Maya%2C%20775%2016%20Canc%C3%BAn%2C%20Q.R.!5e0!3m2!1ses!2smx!4v1721413540046!5m2!1ses!2smx"
                             allowfullscreen=""
                             loading="lazy">
                         </iframe>

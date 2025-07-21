@@ -1,4 +1,5 @@
 <template>
+    <Loading v-if="loadingStore.isLoading" class="absolute z-10"/>
   <header class="relative w-full h-237 bg-cover bg-center" :style="{ backgroundImage: `url(${FondoDS})` }">
       <!-- Capa semi-transparente para dar opacidad solo al fondo -->
       <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -56,7 +57,8 @@ import axios from 'axios';
 import { useRouter } from 'vue-router';
 import Swal from "sweetalert2";
 import FondoDS from "../assets/img/FondoDS.jpg"
-
+import Loading from "@/components/common/Loading.vue";
+import { useLoadingStore } from "@/stores/loadingStore";
 
 const name = ref('');
 const email = ref('');
@@ -66,6 +68,7 @@ const usertype = ref('user')
 const error = ref('');
 const loading = ref(false);
 const router = useRouter();
+const loadingStore = useLoadingStore()
 
 const register = async () => {
     // Validación de contraseñas
@@ -79,7 +82,7 @@ const register = async () => {
         return;
     }
 
-    loading.value = true;
+    loadingStore.startLoading()
     try {
         const response = await axios.post('https://localhost:7004/api/User/register', {
             name: name.value,
@@ -109,7 +112,7 @@ const register = async () => {
             text: 'No se pudo completar el registro. Inténtalo de nuevo.'
         });
     } finally {
-        loading.value = false;
+        loadingStore.stopLoading()
     }
 };
 </script>

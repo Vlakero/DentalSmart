@@ -30,17 +30,43 @@
         <p class="text-gray-600">Bienvenido, Dr. {{ name }}</p>
       </header>
 
+      <main class="p-6">
+        <p class="mt-4 text-lg text-gray-900 font-semibold">
+        📅 Actualmente tienes <span class="text-blue-600">{{ totalAppointments }}</span> citas <span class="italic">pendientes</span>.
+      </p>
+
+
+      <div class="mt-6 grid grid-cols-3 gap-6">
+          <div class="bg-white p-4 rounded shadow text-center">
+            <h3 class="text-gray-700 font-semibold mb-1">Pendientes</h3>
+            <p class="text-blue-600 text-2xl font-bold">{{ pendingCount }}</p>
+          </div>
+          <div class="bg-white p-4 rounded shadow text-center">
+            <h3 class="text-gray-700 font-semibold mb-1">Confirmadas</h3>
+            <p class="text-green-600 text-2xl font-bold">{{ confirmedCount }}</p>
+          </div>
+          <div class="bg-white p-4 rounded shadow text-center">
+            <h3 class="text-gray-700 font-semibold mb-1">Canceladas</h3>
+            <p class="text-red-600 text-2xl font-bold">{{ canceledCount }}</p>
+          </div>
+        </div>
+
+      </main>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import router from '@/router';
 import axios from 'axios';
-// import UserCount from '@/components/admin/AdminUsuariosView.vue';
-// import CitasCount from '@/components/admin/CitasCount.vue';
-// import Appointment from '@/components/admin/AdminCitasView.vue';
-const name = localStorage.getItem('name')
+
+const name = localStorage.getItem('name');
+const totalAppointments = ref(0);
+const pendingCount = ref(0);
+const confirmedCount = ref(0);
+const canceledCount = ref(0);
+const doctorId = localStorage.getItem('userId');
 
 const logout = async () => {
   try {
@@ -54,9 +80,7 @@ const logout = async () => {
       'https://localhost:7004/api/User/logout',
       {},
       {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       }
     );
 
@@ -66,4 +90,36 @@ const logout = async () => {
     console.error('Error al cerrar sesión:', error.response?.data || error.message);
   }
 };
+
+// Función para obtener la cantidad de citas del doctor
+const fetchDoctorAppointments = async () => {
+  if (!doctorId) {
+    console.error('No se encontró doctorId');
+    return;
+  }
+  try {
+    const token = localStorage.getItem('token');
+    const response = await axios.get(
+      `https://localhost:7004/api/Appointment/count-by-doctor?doctorId=${doctorId}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+
+    // Asignar cada contador según la respuesta del backend
+    pendingCount.value = response.data.pending;
+    confirmedCount.value = response.data.confirmed;
+    canceledCount.value = response.data.canceled;
+
+    // Opcional: sumar total para mostrar en otra parte
+    totalAppointments.value = pendingCount.value + confirmedCount.value + canceledCount.value;
+
+  } catch (error) {
+    console.error('Error al obtener citas del doctor:', error);
+  }
+};
+
+onMounted(() => {
+  fetchDoctorAppointments();
+});
 </script>

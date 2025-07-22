@@ -2,17 +2,20 @@
   <div class="flex h-screen bg-gray-100">
     <!-- Sidebar -->
     <aside class="w-64 bg-[#000430] text-white flex flex-col py-6 px-4">
+      <!-- Logo -->
       <div class="flex items-center gap-3 mb-10">
         <img src="../assets/img/DentalSmart.png" alt="Logo" class="w-10 h-10" />
         <h1 class="text-xl font-bold text-[#04B0F0]">DentalSmart</h1>
       </div>
 
+      <!-- Navegación -->
       <nav class="flex flex-col gap-4 text-lg">
         <RouterLink to="/admin-dashboard" class="hover:text-[#04B0F0]">Dashboard</RouterLink>
         <RouterLink to="/admin-usuarios" class="hover:text-[#04B0F0]">Usuarios</RouterLink>
         <RouterLink to="/admin-citas" class="hover:text-[#04B0F0]">Citas</RouterLink>
       </nav>
 
+      <!-- Botón Cerrar Sesión -->
       <div class="mt-auto">
         <button
           @click="logout"
@@ -23,14 +26,18 @@
       </div>
     </aside>
 
-    <!-- Contenido -->
+    <!-- Contenido Principal -->
     <div class="flex-1 flex flex-col">
       <!-- Header -->
       <header class="bg-white shadow p-4 flex justify-between items-center">
         <h2 class="text-2xl font-semibold text-[#004B93]">Panel de Administración</h2>
-        <p class="text-gray-600">Bienvenido, Administrador</p>
+        <p class="text-gray-600">Bienvenido, Administrador {{ name }}</p>
       </header>
 
+      <!-- Módulo de resumen: Citas -->
+      <main class="p-6">
+        <CitasCount />
+      </main>
     </div>
   </div>
 </template>
@@ -38,9 +45,9 @@
 <script setup lang="ts">
 import router from '@/router';
 import axios from 'axios';
-// import UserCount from '@/components/admin/AdminUsuariosView.vue';
-// import CitasCount from '@/components/admin/CitasCount.vue';
-// import Appointment from '@/components/admin/AdminCitasView.vue';
+import CitasCount from '@/components/admin/CitasCount.vue';
+
+const name = localStorage.getItem('name');
 
 const logout = async () => {
   try {
